@@ -1,61 +1,122 @@
+# Network-Based Drug Repurposing Using NetMedPy
 
-# Network-Based Drug Repurposing
+## 1. Research Question
 
-## Research Question
-Are Vitamin D drug targets located close to inflammation-associated
-proteins in a human protein-protein interaction network?
+Are Vitamin D target proteins located close to inflammation-associated proteins in a human protein-protein interaction (PPI) network?
 
-## Dataset
-NetMedPy VitaminD example dataset:
+This project applies network-based drug repurposing methods to investigate the proximity between Vitamin D targets and disease-associated proteins.
+
+An additional comparison examines Vitamin D target proximity across 13 disease gene sets.
+
+## 2. Data Source
+
+The datasets were obtained from the official NetMedPy GitHub repository:
+
 https://github.com/menicgiulia/NetMedPy
 
-- PPI proteins: 18642
-- PPI interactions: 354650
-- Vitamin D targets: 15
-- Inflammation genes: 608
+The following datasets from its VitaminD example resources were used:
 
-## Method
-Network-based proximity analysis using average minimum
-shortest-path distance.
+| Dataset | Description |
+|---|---|
+| `ppi_network.pkl` | Human protein-protein interaction network |
+| `vitd_targets_cpie.pkl` | Vitamin D target proteins |
+| `disease_genes_merge.pkl` | Disease-associated gene sets |
 
-Statistical significance was evaluated using NetMedPy's
-degree-matched null-model sampling with 100 iterations.
+### Dataset Statistics
 
-## Modification Beyond the Tutorial
-We selected Inflammation from the available disease gene sets
-and investigated its proximity to Vitamin D drug targets.
-This changes the biological comparison from the tutorial example.
+- PPI network proteins: 18,642
+- PPI interactions: 354,650
+- Vitamin D targets present in network: 15
+- Disease gene sets: 13
+- Inflammation genes present in network: 608
 
-## Results and Interpretation
+## 3. Methodology
 
-- Observed proximity: 0.4000
-- Degree-matched random mean: 1.3440
-- Z-score: -7.9226
-- Empirical p-value: 0.0099
-- Random iterations: 100
+The project uses network proximity analysis based on average minimum shortest-path distance.
 
-The observed proximity is lower than the degree-matched random
-mean. The negative z-score indicates that Vitamin D targets are
-closer to inflammation-associated proteins than expected under
-the degree-matched random comparison.
+The observed proximity between Vitamin D targets and inflammation genes is compared with degree-matched random protein sets.
 
-This suggests a network-level association, not proof that
-Vitamin D is an effective treatment for inflammation.
+The analysis calculates:
+- Observed proximity
+- Randomised mean proximity
+- Z-score
+- Empirical p-value
 
-## Limitations
-- Protein interaction networks are incomplete.
-- Network proximity does not establish clinical effectiveness.
+The project also compares observed proximity across all 13 disease gene sets.
+
+## 4. How to Run the Code
+
+### Requirements
+
+Python 3 and the packages listed in `requirements.txt`.
+
+### Step 1: Clone the repository
+
+```bash
+git clone https://github.com/saisaradaR/Network-Based-Drug-Repurposing.git
+cd Network-Based-Drug-Repurposing
+```
+
+### Step 2: Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 3: Download the datasets
+
+```bash
+python download_data.py
+```
+
+This downloads the required datasets into the `data` folder.
+
+### Step 4: Run the notebook
+
+Open `Network_Based_Drug_Repurposing.ipynb` using Google Colab or Jupyter Notebook.
+
+Run the cells in order to reproduce the analysis and generate the results.
+
+## 5. Results
+
+### Vitamin D and Inflammation
+
+| Measurement | Result |
+|---|---:|
+| Observed proximity | 0.4000 |
+| Degree-matched random mean | 1.3440 |
+| Z-score | -7.9226 |
+| Empirical p-value | 0.0099 |
+| Random iterations | 100 |
+
+The observed proximity is lower than the degree-matched random mean, suggesting that Vitamin D targets are closer to inflammation-associated proteins than expected under this random comparison.
+
+### Comparison Across Diseases
+
+Inflammation showed the lowest observed proximity (0.4000) among the 13 disease gene sets, followed by Asthma (0.5333) and CAD (0.6000).
+
+This comparison is based on observed proximity values; statistical significance was not separately tested for every disease.
+
+## 6. Limitations
+
+- PPI networks may not contain all biological interactions.
+- Network proximity does not prove drug effectiveness.
 - The analysis uses 100 random iterations.
-- The disease gene set may contain heterogeneous biological roles.
+- Further experimental and clinical validation is required.
 
-## How to Run
-1. Install dependencies using requirements.txt.
-2. Run python download_data.py to download datasets.
-3. Open the analysis notebook in Google Colab or Jupyter.
-4. Run the notebook cells in order.
+## 7. Repository Files
 
-## Files
-- requirements.txt: Python dependencies
-- download_data.py: Dataset download script
-- proximity_results.csv: Statistical results
-- proximity_results.png: Results graph
+- `Network_Based_Drug_Repurposing.ipynb` – Analysis notebook.
+- `README.md` – Project documentation.
+- `requirements.txt` – Python dependencies.
+- `download_data.py` – Dataset download script.
+- `proximity_results.csv` – Main statistical results.
+- `proximity_results.png` – Proximity distribution graph.
+- `all_disease_comparison.csv` – Disease comparison results.
+- `all_disease_comparison.png` – Disease comparison graph.
+
+## 8. Reference
+
+Guney, E., Menche, J., Vidal, M., & Barabási, A.-L. (2016). Network-based in silico drug efficacy screening. *Nature Communications*, 7, 10331.
+
+https://doi.org/10.1038/ncomms10331
