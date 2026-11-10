@@ -12,7 +12,13 @@ files = {
 }
 
 for filename, url in files.items():
-    urllib.request.urlretrieve(url, f"data/{filename}")
-    print("Downloaded:", filename)
+    destination = f"data/{filename}"
 
-print("All datasets downloaded successfully!")
+    try:
+        urllib.request.urlretrieve(url, destination)
+        print(f"Successfully downloaded: {filename}")
+    except Exception as error:
+        print(f"Failed to download {filename}: {error}")
+        raise
+
+print("All three datasets downloaded successfully!")
