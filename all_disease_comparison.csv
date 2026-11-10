@@ -1,0 +1,14 @@
+Disease,Genes in network,Observed proximity
+Inflammation,608,0.4
+Asthma,1531,0.5333333333333333
+CAD,986,0.6
+COPD,481,1.0666666666666667
+Vitamin D Def,78,1.2666666666666666
+Rickets,45,1.6
+Brain Neoplasms,42,1.6666666666666667
+Rett Syn,52,1.7333333333333334
+Prader-Willi Syn,63,1.7333333333333334
+Fragile X Syn,60,1.8
+Factor IX Def,43,2.0
+Beta Thalassemia,17,2.066666666666667
+Factor VII Def,4,2.6

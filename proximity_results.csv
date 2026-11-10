@@ -1,0 +1,10 @@
+Metric,Value
+Drug,Vitamin D
+Disease,Inflammation
+Drug targets,15
+Disease genes,608
+Observed proximity,0.4
+Degree-matched random mean,1.3439999999999999
+Z-score,-7.922615964851596
+Empirical p-value,0.009900990099009901
+Random iterations,100

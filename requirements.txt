@@ -1,0 +1,6 @@
+netmedpy==0.2.0.1
+networkx
+numpy
+pandas
+scipy
+matplotlib
